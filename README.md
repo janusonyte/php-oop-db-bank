@@ -24,6 +24,7 @@ Design is done by me.
 -   Retro design
 -   CRUD
 -   Laravel Mix
+-   Composer
 -   SCSS
 -   PHPMyAdmin
 -   Optional writing to file instead of a DB
