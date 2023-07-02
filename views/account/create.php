@@ -1,9 +1,9 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-12 text-center">
-                <div class="card">
-                    <h5 class="card-header">Open a new account</h5>
+            <div class="col-12">
+                <div class="card text-center">
+                    <h5 class="card-header ">Open a new account</h5>
 
                     <div class="card-body">
 
@@ -14,17 +14,23 @@
                             </div>
                             <div class="col-md-12">
                                 <label for="lastName" class="form-label">Last name:</label>
-                                <input type="text" class="form-control" name="lastName"
-                                    placeholder="Enter your last name">
+                                <input type="text" class="form-control" name="lastName" placeholder="Enter your last name">
                             </div>
                             <div class="col-md-12">
                                 <label for="personalId" class="form-label">Personal ID number:</label>
-                                <input type="text" class="form-control" name="personalId"
-                                    placeholder="Enter your personal ID number" minlength="11" maxlength="11">
+                                <input type="text" class="form-control" name="personalId" placeholder="Enter your personal ID number" minlength="11" maxlength="11">
+                            </div>
+
+                            <div class="col-md-12 " style="max-width: 500px;">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Where should the new account be saved?</option>
+                                    <option value="1">File</option>
+                                    <option value="2">Database</option>
+                                </select>
                             </div>
 
 
-                            <div class="col-12">
+                            <div class="col-12 text-center">
                                 <button type="submit" class="purple-gradient">Save</button>
                             </div>
                         </form>
