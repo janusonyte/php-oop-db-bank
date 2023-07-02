@@ -1,0 +1,419 @@
+@import "~bootstrap/scss/bootstrap";
+@import './variables.module.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    font-family: "Roboto", monospace;
+    // background-color: $retro-light-green;
+    background: rgb(131, 58, 180);
+    background: linear-gradient(0deg, rgba(131, 58, 180, 1) 0%, rgba(182, 46, 117, 1) 43%, rgba(253, 29, 29, 1) 71%, rgba(252, 176, 69, 1) 100%);
+    min-height: 100vh;
+    // font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+h1 {
+    color: crimson;
+}
+
+.card {
+    margin: 100px;
+}
+
+
+button {
+    background-color: $gray;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+    font-weight: normal;
+    padding: 10px 15px;
+    text-align: center;
+    transition: 200ms;
+    box-sizing: border-box;
+    border: 2px solid black;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    min-width: 100px;
+    max-width: 130px;
+    margin: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+
+    &:disabled {
+        filter: saturate(0.2) opacity(0.5);
+        -webkit-filter: saturate(0.2) opacity(0.5);
+        cursor: not-allowed;
+    }
+
+    &.black {
+        background-color: $black;
+        color: white;
+
+        &:not(:disabled):hover {
+            background: lighten($black, 10%);
+        }
+    }
+
+    &.blue {
+        background-color: $blue;
+        color: white;
+
+        &:not(:disabled):hover {
+            background: darken($blue, 20%);
+        }
+    }
+
+    &.red {
+        background-color: $red;
+        color: white;
+        transition: transform .5s;
+
+        &:not(:disabled):hover {
+            background: darken($red, 20%);
+            transform: scale(1.1);
+        }
+    }
+
+    &.yellow {
+        background-color: $yellow;
+        color: white;
+        transition: transform .5s;
+
+
+        &:not(:disabled):hover {
+            background: darken($yellow, 20%);
+            transform: scale(1.1);
+        }
+    }
+
+    &.pink {
+        background-color: $pink;
+        color: white;
+
+        &:not(:disabled):hover {
+            background: darken($pink, 20%);
+        }
+
+    }
+
+    &.slate-gray {
+        background-color: $slate-gray;
+        color: white;
+
+        &:not(:disabled):hover {
+            background: darken($slate-gray, 20%);
+        }
+
+    }
+
+    &.purple-gradient {
+        background-image: linear-gradient(126.3deg, rgba(30, 2, 83, 1) 32.2%, rgba(198, 55, 160, 0.46) 109.2%);
+        color: white;
+        transition: transform .5s;
+
+        &:not(:disabled):hover {
+            transform: scale(1.2);
+        }
+    }
+
+    &.green {
+        background-color: $green;
+        color: white;
+        transition: transform .5s;
+
+        &:not(:disabled):hover {
+            background: darken($green, 20%);
+            transform: scale(1.1);
+        }
+    }
+
+    &.close {
+        content: '\25B2';
+        font-size: 26px;
+        background: black;
+        color: #102A2D;
+
+        &:not(:disabled):hover {
+            background: transparent;
+            color: #6b1281;
+
+        }
+    }
+}
+
+
+a.button {
+    text-decoration: none;
+    background-color: $gray;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+    font-weight: normal;
+    padding: 10px 15px;
+    text-align: center;
+    transition: 200ms;
+    box-sizing: border-box;
+    border: 2px solid black;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    min-width: 100px;
+    margin: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+
+    &:disabled {
+        filter: saturate(0.2) opacity(0.5);
+        -webkit-filter: saturate(0.2) opacity(0.5);
+        cursor: not-allowed;
+    }
+
+    &.black {
+        background-color: $black;
+        color: white;
+
+        &:not(:disabled):hover {
+            background: lighten($black, 10%);
+        }
+    }
+
+    &.blue {
+        background-color: $blue;
+        color: white;
+
+        &:not(:disabled):hover {
+            background: darken($blue, 20%);
+        }
+    }
+
+    &.red {
+        background-color: $red;
+        color: white;
+        transition: transform .5s;
+
+        &:not(:disabled):hover {
+            background: darken($red, 20%);
+            transform: scale(1.1);
+        }
+    }
+
+    &.yellow {
+        background-color: $yellow;
+        color: white;
+        transition: transform .5s;
+
+
+        &:not(:disabled):hover {
+            background: darken($yellow, 20%);
+            transform: scale(1.1);
+        }
+    }
+
+    &.pink {
+        background-color: $pink;
+        color: white;
+
+        &:not(:disabled):hover {
+            background: darken($pink, 20%);
+        }
+
+    }
+
+    &.slate-gray {
+        background-color: $slate-gray;
+        color: white;
+
+        &:not(:disabled):hover {
+            background: darken($slate-gray, 20%);
+        }
+
+    }
+
+    &.purple-gradient {
+        background-image: linear-gradient(126.3deg, rgba(30, 2, 83, 1) 32.2%, rgba(198, 55, 160, 0.46) 109.2%);
+        color: white;
+        transition: transform .5s;
+
+        &:not(:disabled):hover {
+            transform: scale(1.2);
+        }
+    }
+
+    &.green {
+        background-color: $green;
+        color: white;
+        transition: transform .5s;
+
+        &:not(:disabled):hover {
+            background: darken($green, 20%);
+            transform: scale(1.1);
+        }
+    }
+
+    &.close {
+        content: '\25B2';
+        font-size: 26px;
+        background: black;
+        color: #102A2D;
+
+        &:not(:disabled):hover {
+            background: transparent;
+            color: #6b1281;
+
+        }
+    }
+}
+
+
+
+p {
+    font-size: 20px;
+    padding: 0px 25px 10px 25px;
+    margin: auto;
+}
+
+ul.ul-style {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.acc-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 0;
+    color: $slate-gray;
+}
+
+.account {
+    display: flex;
+    justify-content: space-between;
+    color: $slate-gray;
+}
+
+.acc-titles {
+    text-decoration: underline solid #777280;
+    text-underline-offset: 5px;
+    color: #696b6e;
+    font-size: 15px;
+}
+
+
+.acc-fields {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.field-input {
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid $slate-gray;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.field-btn {
+    text-transform: uppercase;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.funds {
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 20%;
+}
+
+
+.card-header {
+    text-align: center;
+    font-size: 20px;
+}
+
+.card {
+    background-color: $retro-light-purple !important;
+    border: 2px solid black;
+    box-shadow: -16px 20px 0px 2px rgba(0, 0, 0, 1);
+}
+
+.navbar {
+    background-color: $gradient-purple !important;
+    border: 2px solid black;
+    // box-shadow: -16px 20px 0px 2px rgba(0, 0, 0, 1);
+}
+
+.navbar-brand {
+    font-size: 25px;
+    font-family: 'Press Start 2P', cursive;
+    color: $slate-gray;
+}
+
+.nav-link {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 25px;
+    margin-left: 60px;
+    color: $slate-gray;
+
+    &:not(:disabled):hover {
+        text-decoration: underline;
+        color: $retro-vlight-purple;
+    }
+}
+
+tr {
+    display: flex;
+    flex-direction: row;
+    // align-items: center;
+    // justify-content: center;
+}
+
+th {
+
+    background: #FFDE66 !important;
+    border-bottom: 2px solid black !important;
+}
+
+td {
+    background: #FFDE66 !important;
+    border-bottom: 2px solid black !important;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.inner-card {
+    box-shadow: none;
+    box-shadow: -16px 25px 0px 2px $retro-purple !important;
+}
+
+.card-header {
+    background-color: $retro-purple;
+    color: black;
+    font-weight: 500;
+    border-bottom: 2px solid black;
+}
+
+.card-body {
+    color: $slate-gray;
+}
