@@ -37,16 +37,11 @@ class DBWriter
     public function create(array $userData): void
     {
         $id = rand(100000000, 999999999);
-        // $userData['id'] = $id;
         $accountNumber = Filewriter::generateIban();
-        // $userData['accountNumber'] = $accountNumber;
         $balance = 0;
-        // $userData['balance'] = $balance;
         $name = $userData['name'];
         $lastName = $userData['lastName'];
         $personalId = $userData['personalId'];
-
-        // $this->data[] = $userData;
 
         $sql  =
             "
@@ -78,12 +73,21 @@ class DBWriter
 
     public function update(int $userId, array $userData): void
     {
-        // foreach ($this->data as $key => $user) {
-        //     if ($user['id'] == $userId) {
-        //         $userData['id'] = $userId; // for safety
-        //         $this->data[$key] = $userData;
-        //     }
-        // }
+        $sql =
+            "
+        UPDATE {$this->tableName}
+        SET 
+            `name` = ?,
+            `lastName` = ?
+        WHERE `id` = ?
+        ";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            $userData['name'],
+            $userData['lastName'],
+            $userId
+        ]);
     }
 
     public function updateAdd(int $userId, array $userData): void
