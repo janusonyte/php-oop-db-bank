@@ -119,28 +119,30 @@ class DBWriter
 
     public function updateDeduct(int $userId, array $userData): void
     {
-        // foreach ($this->data as $key => $user) {
-        //     if ($user['id'] == $userId) {
-        //         $userData['id'] = $userId; // for safety
-        //         $userData['name'] = $user['name'];
-        //         $userData['lastName'] = $user['lastName'];
-        //         $userData['personalId'] = $user['personalId'];
-        //         $userData['accountNumber'] = $user['accountNumber'];
-        //         $amount = $_POST['amount'];
-        //         $oldBalance = $user['balance'];
-        //         if ($amount <= $oldBalance) {
-        //             $userData['balance'] = $oldBalance - $amount;
-        //             Messages::addMessage('success', 'Funds deducted');
-        //             $this->data[$key] = $userData;
-        //         } else {
+        $userData = DBWriter::show($userId);
+        $amount = $_POST['amount'];
 
-        //             $userData['balance'] = $oldBalance;
-        //             Messages::addMessage('danger', 'Not enough funds');
-        //             // $this->data[$key] = $userData;
-        //             // header('Location: /account/withdraw/' . $userId);
-        //         }
-        //     }
-        // }
+        if ($amount <= $userData['balance']) {
+
+            $oldBalance = $userData['balance'];
+            $newBalance = $oldBalance - $amount;
+            $sql =
+                "
+                    UPDATE {$this->tableName}
+                    SET 
+                        `balance` = ?
+                    WHERE `id` = ?
+                    ";
+
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                $newBalance,
+                $userId
+            ]);
+            Messages::addMessage('success', 'Funds deducted');
+        } else {
+            Messages::addMessage('danger', 'Not enough funds');
+        }
     }
 
     public function delete(int $userId): void
