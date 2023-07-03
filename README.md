@@ -3,7 +3,7 @@
 ![Retro](https://img.shields.io/badge/Retro-Design-pink.svg)
 ![PHP](https://img.shields.io/badge/PHP-Database-purple.svg)
 
-# PHP OOP Bank with a Database and File Writing functionalities
+# PHP OOP Bank with Database and File Writing functionalities
 
 _PHP bank functionality and design project_
 
@@ -24,6 +24,7 @@ Design is done by me.
 -   Retro design
 -   CRUD
 -   Laravel Mix
+-   Composer
 -   SCSS
 -   PHPMyAdmin
 -   Optional writing to file instead of a DB
