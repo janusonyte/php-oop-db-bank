@@ -92,29 +92,9 @@ class DBWriter
 
     public function updateAdd(int $userId, array $userData): void
     {
-        // foreach ($this->data as $key => $user) {
-
-        //     if ($user['id'] == $userId) {
-        //         $userData['id'] = $userId; // for safety
-        //         if ($_POST['amount'] > 0) {
-        //             $oldBalance = $user['balance'];
-        //             $newBalance = $_POST['amount'];
-        //             $userData['balance'] = $oldBalance + $newBalance;
-        //             $userData['name'] = $user['name'];
-        //             $userData['lastName'] = $user['lastName'];
-        //             $userData['personalId'] = $user['personalId'];
-        //             $userData['accountNumber'] = $user['accountNumber'];
-        //             Messages::addMessage('success', 'Funds added');
-        //             $this->data[$key] = $userData;
-        //         } else {
-        //             Messages::addMessage('danger', 'Amount must be more than 0');
-        //             // $this->data[$key] = $userData;
-        //             // header('Location: /account/deposit/' . $userId);
-        //         }
-        //     }
-        // }
-
         if ($_POST['amount'] > 0) {
+
+            $userData = DBWriter::show($userId);
             $oldBalance = $userData['balance'];
             $newBalance = $_POST['amount'];
             $userData['balance'] = $oldBalance + $newBalance;
@@ -122,7 +102,7 @@ class DBWriter
                 "
                     UPDATE {$this->tableName}
                     SET 
-                        `balance` = ?,
+                        `balance` = ?
                     WHERE `id` = ?
                     ";
 
@@ -133,7 +113,6 @@ class DBWriter
             ]);
         } else {
             Messages::addMessage('danger', 'Amount must be more than 0');
-            // header('Location: /account/deposit/' . $userId);
         }
     }
 
