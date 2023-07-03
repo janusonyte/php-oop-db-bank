@@ -4,6 +4,7 @@ namespace Bank\Controllers;
 
 use Bank\App;
 use Bank\FileWriter;
+use Bank\DBWriter;
 use Bank\OldData;
 use Bank\Messages;
 
@@ -11,7 +12,9 @@ class AccountController
 {
     public function index()
     {
-        $data = new FileWriter('account');
+        // $data = new FileWriter('account');
+
+        $data = App::get('account');
 
         return App::view('account/index', [
             'pageTitle' => 'Accounts',
@@ -29,7 +32,8 @@ class AccountController
     public function store(array $request)
     {
 
-        $data = new FileWriter('account');
+        // $data = new FileWriter('account');
+        $data = App::get('account');
 
         if (strlen($request['name']) < 3) {
             Messages::addMessage('danger', 'First name must be at least 3 characters');
@@ -52,7 +56,8 @@ class AccountController
 
     public function edit(int $id)
     {
-        $data = new FileWriter('account');
+        // $data = new FileWriter('account');
+        $data = App::get('account');
         $account = $data->show($id);
 
         return App::view('account/edit', [
@@ -63,7 +68,8 @@ class AccountController
 
     public function deposit(int $id)
     {
-        $data = new FileWriter('account');
+        // $data = new FileWriter('account');
+        $data = App::get('account');
         $account = $data->show($id);
 
         return App::view('account/deposit', [
@@ -74,7 +80,8 @@ class AccountController
 
     public function withdraw(int $id)
     {
-        $data = new FileWriter('account');
+        // $data = new FileWriter('account');
+        $data = App::get('account');
         $account = $data->show($id);
 
         return App::view('account/withdraw', [
@@ -86,7 +93,8 @@ class AccountController
 
     public function update(int $id, array $request)
     {
-        $data = new FileWriter('account');
+        // $data = new FileWriter('account');
+        $data = App::get('account');
 
         if (strlen($request['name']) <= 3) {
             Messages::addMessage('danger', 'First name must be at least 3 characters');
@@ -105,14 +113,12 @@ class AccountController
             Messages::addMessage('success', 'Account edited successfully');
             header('Location: /account');
         }
-        // $data->update($id, $request);
-
-        // header('Location: /account');
     }
 
     public function updateAdd(int $id, array $request)
     {
-        $data = new FileWriter('account');
+        // $data = new FileWriter('account');
+        $data = App::get('account');
         $data->updateAdd($id, $request);
 
         header('Location: /account/deposit/' . $id);
@@ -120,7 +126,8 @@ class AccountController
 
     public function updateDeduct(int $id, array $request)
     {
-        $data = new FileWriter('account');
+        // $data = new FileWriter('account');
+        $data = App::get('account');
         $data->updateDeduct($id, $request);
 
         header('Location: /account/withdraw/' . $id);
@@ -131,7 +138,8 @@ class AccountController
 
     public function delete(int $id)
     {
-        $account = (new FileWriter('account'))->show($id);
+        // $account = (new FileWriter('account'))->show($id);
+        $account = (App::get('account'))->show($id);
         return App::view('account/delete', [
             'pageTitle' => 'Close an account',
             'account' => $account,
@@ -140,7 +148,8 @@ class AccountController
 
     public function destroy(int $id)
     {
-        $data = new FileWriter('account');
+        // $data = new FileWriter('account');
+        $data = App::get('account');
         // $data->delete($id);
         // header('Location: /account');
         $account = $data->show($id);

@@ -29,7 +29,6 @@ class FileWriter implements DataBase
 
     public static function generateIban()
     {
-
         $bankAccountNumber = sprintf('%016d', mt_rand(0, 99999999999999));
         $countryCode = 'LT';
         $iban = $countryCode . '00' . $bankAccountNumber;
