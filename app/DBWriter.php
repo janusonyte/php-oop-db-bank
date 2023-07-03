@@ -113,6 +113,28 @@ class DBWriter
         //         }
         //     }
         // }
+
+        if ($_POST['amount'] > 0) {
+            $oldBalance = $userData['balance'];
+            $newBalance = $_POST['amount'];
+            $userData['balance'] = $oldBalance + $newBalance;
+            $sql =
+                "
+                    UPDATE {$this->tableName}
+                    SET 
+                        `balance` = ?,
+                    WHERE `id` = ?
+                    ";
+
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                $userData['balance'],
+                $userId
+            ]);
+        } else {
+            Messages::addMessage('danger', 'Amount must be more than 0');
+            // header('Location: /account/deposit/' . $userId);
+        }
     }
 
 
@@ -144,11 +166,14 @@ class DBWriter
 
     public function delete(int $userId): void
     {
-        // foreach ($this->data as $key => $acc) {
-        //     if ($acc['id'] == $userId) {
-        //         unset($this->data[$key]);
-        //     }
-        // }
+        $sql =
+            "
+        DELETE FROM {$this->tableName}
+        WHERE `id` = ?
+        ";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$userId]);
     }
 
     public function show(int $userId): array
