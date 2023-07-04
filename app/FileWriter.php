@@ -111,8 +111,6 @@ class FileWriter implements DataBase
 
                     $userData['balance'] = $oldBalance;
                     Messages::addMessage('danger', 'Not enough funds');
-                    // $this->data[$key] = $userData;
-                    // header('Location: /account/withdraw/' . $userId);
                 }
             }
         }
@@ -139,5 +137,43 @@ class FileWriter implements DataBase
     public function showAll(): array
     {
         return $this->data;
+    }
+
+    public function getUserByEmailAndPass($email, $password)
+    {
+        $email = $data['email'] ?? '';
+        $password = $data['password'] ?? '';
+
+        //Filewriter version of login:
+
+        $users = (new FileWriter('users'))->showAll();
+
+        foreach ($users as $user) {
+            if ($user['email'] == $email && $user['password'] == md5($password)) {
+                $_SESSION['email'] = $email;
+                $_SESSION['name'] = $user['name'];
+                Messages::addMessage('success', 'You have successfully logged in');
+                header('Location: /account');
+                die;
+            }
+        }
+
+        //end
+
+        //DBWriter version of login:
+        $user = App::get('users')->getUserByEmailAndPass($email, $password);
+        if ($user) {
+            $_SESSION['email'] = $email;
+            $_SESSION['name'] = $user['name'];
+            Messages::addMessage('success', 'You are logged in');
+            header('Location: /');
+            die;
+        }
+        //end
+
+        Messages::addMessage('danger', 'Wrong email or password');
+        // OldData::flashData($data);
+        header('Location: /login');
+        die;
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 $users = [
-    ['name' => 'Gjan', 'email' => 'gjan@gmail.com', 'password' => md5('1234')],
+    // ['name' => 'Gjan', 'email' => 'gjan@gmail.com', 'password' => md5('1234')],
     ['name' => 'test', 'email' => 'test@gmail.com', 'password' => md5('1234')]
 ];
 
